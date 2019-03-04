@@ -1,0 +1,106 @@
+body {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    background: url('../images/full-bloom.png') repeat center center fixed;
+}
+p {
+    font-size: 15px;
+}
+.big {
+    font-size: 2rem;
+    font-weight: 1000;
+    color: rgb(56, 50, 50);
+}
+.animateImage {
+    position: relative;
+    top: 0;
+    z-index: 0;
+    width: 50px;
+    height: 50px;
+}
+.animateImage1 {
+    position: absolute;
+    top: 112px;
+    right: 0px;
+    z-index: 0;
+    width: 60px;
+    height: 30px;
+}
+.animateImage2 {
+    position: absolute;
+    top: 112px;
+    z-index: 0;
+    width: 60px;
+    height: 40px;
+}
+.animateImage3 {
+    position: absolute;
+    top: 614px; 
+    right: 0px;
+    z-index: 0;
+    width: 80px;
+    height: 80px;
+}
+.lessPadding {
+    padding: .8rem;
+}
+.topicInput {
+    width: 90%;
+    margin: auto;
+}
+.image {
+    margin: 5px;
+}
+#addGif {
+    width: 90%;
+    margin: auto;
+}
+#firstDiv {
+    min-height: 150px;
+    overflow: auto;
+}
+#secondDiv {
+    min-height: 285px;
+    overflow: auto;
+}
+/* Change Bootstrap CSS*/
+.container {
+    position: relative;
+    max-width: 90%;
+    z-index: 100;
+}
+.card-header { 
+    padding: 0;
+}
+.h2, h2 {
+    font-size: 1rem;
+}
+.h1, h1 {
+    font-size: 1.5rem;
+    color: orangered;
+}
+.h3, h3 {
+    font-size: 1.2rem;
+}
+.jumbotron {
+    position: relative;
+    padding: 2rem 2rem;
+    /*background: url('../images/gems3.jpg') no-repeat center center fixed;
+    background-size: 100% 100%;*/
+    background-image: url('../images/bg.JPG');
+    background-size: cover;
+    background-position-x: 0px;
+    background-position-y: -60px;
+    z-index: 5;
+}
+.btn {
+    padding: .35rem 1rem;
+}
+/* START - Media Queries */
+@media screen and (max-width: 770px)  {
+    
+}
+@media screen and (max-width: 500px)  {
+
+}
+/* END - Media Queries */
