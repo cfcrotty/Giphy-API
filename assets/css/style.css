@@ -47,21 +47,44 @@ p {
 .topicInput {
     width: 90%;
     margin: auto;
+    font-size: 12px;
 }
 .image {
     margin: 5px;
 }
+.GGif {
+    margin: 0 3px;
+    font-size: 12px;
+    padding: 1px 3px !important;
+}
+.title {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    font-size: 20px;
+}
 #addGif {
     width: 90%;
     margin: auto;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+#showFav {
+    width: 90%;
+    margin: auto;
+    font-size: 12px;
+    margin-top: 20px;
 }
 #firstDiv {
     min-height: 150px;
+    overflow: hidden;
+}
+#thirdDiv {
+    min-height: 285px;
     overflow: auto;
 }
 #secondDiv {
-    min-height: 285px;
-    overflow: auto;
+    display: none;
 }
 /* Change Bootstrap CSS*/
 .container {
@@ -94,7 +117,14 @@ p {
     z-index: 5;
 }
 .btn {
-    padding: .35rem 1rem;
+    padding: .2rem;
+}
+.form-control {
+    padding: .2rem;
+    margin-bottom: 5px;
+}
+.card-body {
+    padding: .5rem;
 }
 /* START - Media Queries */
 @media screen and (max-width: 770px)  {

@@ -30,10 +30,14 @@ function displayGiphyInfo() {
     $("#lastRow").empty();
     //data is the JSON string
     //$("#lastRow").html(JSON.stringify(response));
-    responseGlobal=response;
-    for (var i=0;i<response.data.length;i++) {
-        $("#lastRow").append(`<button id="id${i}" id="id${i}" value="${i}"><img id="img${i}" name="img${i}" class="image" src="${response.data[i].images.fixed_height_small_still.url}"></button>`);
-        $("#id"+i).click(stillOrGif);
+    if (response.data.length>1 && response.pagination.count>0) {
+        responseGlobal=response;
+        for (var i=0;i<response.data.length;i++) {
+            $("#lastRow").append(`<button id="id${i}" name="id${i}" value="${i}"><img id="img${i}" name="img${i}" class="image" src="${response.data[i].images.fixed_height_small_still.url}"></button>`);
+            $("#id"+i).click(stillOrGif);
+        }
+    } else {
+        $("#lastRow").append(`No result for this topic`);
     }
   });
   
@@ -45,7 +49,7 @@ function renderButtons() {
   for (var i = 0; i < topics.length; i++) {
     // Then dynamicaly generating buttons for each gif in the array
     var a = $("<button>");
-    a.addClass("GGif");
+    a.addClass("btn btn-info GGif");
     a.attr("data-name", topics[i]);
     a.text(topics[i]);
     $("#topRow").append(a);
@@ -55,9 +59,13 @@ function renderButtons() {
 $("#addGif").on("click", function(event) {
   event.preventDefault();
   var giphy = $("#gifInput").val().trim();
-  topics.push(giphy);
-  renderButtons();
+  var chk = topics.indexOf(giphy);
+  if (giphy && chk<0) {
+    topics.push(giphy);
+    renderButtons();
+  }
 });
+//
 function stillOrGif() {
     var idx = $(this).val();
     //alert(responseGlobal.data[idx].images.fixed_height_small.url);
@@ -67,10 +75,18 @@ function stillOrGif() {
         $("#img"+idx).attr("src",responseGlobal.data[idx].images.fixed_height_small.url);
     }
 }
+//
+function showHideFav() {
+    if ($("#secondDiv").css('display') == 'none') {
+        $("#secondDiv").show();
+    } else {
+        $("#secondDiv").hide();
+    }
+}
+$("#showFav").on("click", showHideFav);
 // Generic function for displaying the GiphyInfo
 $(document).on("click", ".GGif", displayGiphyInfo);
 renderButtons();
-
 //function for animation of image
 function showHideImages() {
     if (!back1 && theHeight <= heightScreen) {
