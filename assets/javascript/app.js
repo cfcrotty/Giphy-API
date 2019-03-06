@@ -40,7 +40,7 @@ function displayGiphyInfo() {
         for (var i=0;i<response.data.length;i++) {
             var div = $("<div>");
             div.addClass("divGif");
-            div.append(`<button class="gifBtn" id="id${i}" name="id${i}" value="${i}"><p>Title: ${response.data[i].title}</p><p>Rating: ${response.data[i].rating.toUpperCase()}</p>
+            div.append(`<button class="gifBtn" id="id${i}" name="id${i}" value="${i}"><p>${response.data[i].title}</p><p>Rating: ${response.data[i].rating.toUpperCase()}</p>
             <img id="img${i}" name="img${i}" class="image" src="${response.data[i].images.fixed_height_small_still.url}"></button>
             <p class="pFav"><button class="btn btn-primary addGif" id="fav${i}" name="fav${i}" value="${i}">Add to Favorites</button></p>`);
             $("#lastRow").prepend(div);
@@ -52,7 +52,6 @@ function displayGiphyInfo() {
         $("#lastRow").append(`No result for this topic`);
     }
   });
-  
 }
 // Function for displaying gif data
 function renderButtons() {
@@ -111,17 +110,19 @@ function addToFavorites() {
     var chk = favArray.map(function(e) { return e.id; }).indexOf(responseGlobal.data[idx].id);
     if (chk<0) {
         favArray.push(responseGlobal.data[idx]);
+        localStorage.setItem("gifFavorites", JSON.stringify(favArray));
         displayFavorites();
     }
 }
 //function display favorites
 function displayFavorites() {
+    if (localStorage.getItem("gifFavorites")) favArray = Array.from(JSON.parse(localStorage.getItem("gifFavorites")));
     $("#lastRowFav").empty();
     if (favArray.length>0) {
         for (var i=0;i<favArray.length;i++) {
             var div = $("<div>");
             div.addClass("divGif");
-            div.append(`<button id="idFav${i}" name="idFav${i}" value="${i}" class="gifBtn"><p>Title: ${favArray[i].title}</p><p>Rating: ${favArray[i].rating.toUpperCase()}</p><img id="imgFav${i}" name="imgFav${i}" class="image" src="${favArray[i].images.fixed_height_small_still.url}"></button>
+            div.append(`<button id="idFav${i}" name="idFav${i}" value="${i}" class="gifBtn"><p>${favArray[i].title}</p><p>Rating: ${favArray[i].rating.toUpperCase()}</p><img id="imgFav${i}" name="imgFav${i}" class="image" src="${favArray[i].images.fixed_height_small_still.url}"></button>
             <p class="pFav"><button class="btn btn-primary addGif" id="removeFav${i}" name="removeFav${i}" value="${i}">Remove from Favorites</button>`);
             $("#lastRowFav").prepend(div);
             $("#removeFav"+i).click(removeFromFavorites);
@@ -135,6 +136,7 @@ function displayFavorites() {
 function removeFromFavorites() {
     var idx = $(this).val();
     favArray.splice(idx,1);
+    localStorage.setItem("gifFavorites", JSON.stringify(favArray));
     displayFavorites();
 } 
 //
@@ -149,6 +151,19 @@ function downloadGif() {
     //};
     //downloadingImage.src = responseGlobal.data[idx].images.fixed_height_small.url;
 }
+//function to show weather information 
+function showWeather() {
+    var apiKey = "63466a37cf7e65e9cee156d4dc706f3f";
+    var queryURL = "api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey;
+    alert(queryURL);
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+  });
+}
+$("#weather").on("click",showWeather);
 $("#showFav").on("click", showHideFav);
 // Generic function for displaying the GiphyInfo
 $(document).on("click", ".GGif", displayGiphyInfo);
