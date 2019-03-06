@@ -154,7 +154,7 @@ function downloadGif() {
 //function to show weather information 
 function showWeather() {
     var apiKey = "63466a37cf7e65e9cee156d4dc706f3f";
-    var queryURL = "api.openweathermap.org/data/2.5/weather?q=San Diego&appid=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=San%20Diego&appid=" + apiKey;
     alert(queryURL);
   $.ajax({
     url: queryURL,
