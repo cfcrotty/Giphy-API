@@ -250,10 +250,10 @@ p {
         top: 138px;
     }
 }
-@media screen and (max-width: 400px)  {
-    .gifBtn {
-        width: 180px;
-        height: 150px;
+@media screen and (max-width: 670px)  {
+    .gifBtn, .divGif {
+        min-width: 180px;
+        min-height: 150px;
     }
 }
 /* END - Media Queries */
