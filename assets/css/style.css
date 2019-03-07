@@ -245,10 +245,9 @@ p {
     border-color: rgb(80, 51, 136);
 }
 /* START - Media Queries */
-@media screen and (max-width: 770px)  {
-    
-}
-@media screen and (max-width: 500px)  {
-
+@media screen and (max-width: 520px)  {
+    .animateImage1 {
+        top: 138px;
+    }
 }
 /* END - Media Queries */
