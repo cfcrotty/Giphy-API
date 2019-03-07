@@ -197,7 +197,7 @@ function showWeather() {
     var city1 = getLocation(lat, long);
     if (city1) city = city1;
     var apiKey = "63466a37cf7e65e9cee156d4dc706f3f";
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
     //alert(queryURL);
     $.ajax({
         url: queryURL,
